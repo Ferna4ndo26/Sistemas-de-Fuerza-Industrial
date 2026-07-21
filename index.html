@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistemas de Fuerza Industrial — Renta de Generadores, Compresores Kaeser y Torres de Iluminación en Nuevo León</title>
+<meta name="description" content="Renta de generadores industriales, compresores Kaeser y torres de iluminación en Nuevo León. Flota disponible, entrega ágil y soporte técnico 24/7.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+      <span class="brand-tagline">Energía siempre disponible</span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="equipos.html">Equipos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="cotizacion.html">Cotización</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="cotizacion.html" class="nav-cta">Solicitar renta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Renta de equipo industrial · Nuevo León</div>
+    <div class="hero-lema">Energía siempre disponible</div>
+    <h1>Energía y aire comprimido, <em>listos para trabajar</em></h1>
+    <p class="lead">Generadores, compresores Kaeser y torres de iluminación disponibles para renta inmediata. Flota propia, entrega en obra y soporte técnico cuando lo necesites.</p>
+    <div class="hero-actions">
+      <a href="cotizacion.html" class="btn btn-amber">Solicitar cotización</a>
+      <a href="equipos.html" class="btn btn-outline-light">Ver equipos disponibles</a>
+    </div>
+  </div>
+  <div class="hero-inner">
+    <div class="stat-strip" id="stat-strip">
+      <!-- rellenado por JS con datos reales del inventario -->
+    </div>
+  </div>
+</section>
+
+<section class="promo-section">
+  <div class="container">
+    <div class="promo-banner">
+      <img src="img/promo-generac-planta.png" alt="Generador industrial Generac operando en planta">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Categorías</div>
+      <h2>Tres líneas de equipo, una sola llamada</h2>
+      <p>Todo el inventario mostrado está confirmado disponible en patio a la fecha de hoy.</p>
+    </div>
+    <div class="cat-grid">
+
+      <div class="cat-card">
+        <svg class="cat-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="14" width="40" height="22" rx="2" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="16" cy="25" r="5" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M13 25h6M16 22v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M28 20h10M28 25h10M28 30h6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 14V8M20 14V8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Generadores</h3>
+        <div class="cat-range" id="cat-gen-range">—</div>
+        <p>Diésel, remolcables o sobre patín. Cambio de voltaje y frecuencia disponible en la mayoría de las unidades.</p>
+        <a class="cat-link" href="equipos.html#generador">Ver generadores →</a>
+      </div>
+
+      <div class="cat-card">
+        <svg class="cat-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="18" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="14" cy="26" r="3" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="22" cy="26" r="3" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M30 24h8a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4h-2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M12 18v-4M22 18v-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Compresores Kaeser</h3>
+        <div class="cat-range" id="cat-comp-range">—</div>
+        <p>Compresores de tornillo montados sobre remolque, ideales para obra, sandblasteo y herramienta neumática.</p>
+        <a class="cat-link" href="equipos.html#compresor">Ver compresores →</a>
+      </div>
+
+      <div class="cat-card">
+        <svg class="cat-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 6v6M24 6l-6 4M24 6l6 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="16" y="12" width="16" height="10" rx="1.5" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M24 22v14M18 42h12M24 36v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M14 42h20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Torres de iluminación</h3>
+        <div class="cat-range" id="cat-torre-range">—</div>
+        <p>Mástiles telescópicos con reflectores LED, autonomía extendida y montaje sobre remolque o patín.</p>
+        <a class="cat-link" href="equipos.html#torre">Ver torres de iluminación →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="promo-section">
+  <div class="container">
+    <div class="promo-banner">
+      <img src="img/promo-compresor-obra.png" alt="Compresor Kaeser en construcción">
+    </div>
+    <div class="promo-banner-caption">
+      <p>Compresores en renta para obra y construcción, listos para entrega inmediata.</p>
+      <a href="cotizacion.html" class="btn btn-outline" style="padding:9px 16px;font-size:13px;">Cotiza por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Por qué rentar con SFI</div>
+      <h2>Equipo verificado, entrega sin fricción</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <h4>Flota propia</h4>
+        <p>Todo el inventario es de SFI: sin subcontratar equipo de terceros ni sorpresas de disponibilidad.</p>
+      </div>
+      <div class="feat">
+        <h4>Multivoltaje</h4>
+        <p>La mayoría de los generadores admite cambio de voltaje y frecuencia según el proyecto.</p>
+      </div>
+      <div class="feat">
+        <h4>Entrega en obra</h4>
+        <p>Traslado en remolque o con grúa según el peso y tamaño del equipo, coordinado con tu calendario.</p>
+      </div>
+      <div class="feat">
+        <h4>Soporte directo</h4>
+        <p>Línea de atención con WhatsApp para dudas técnicas, refacciones o extensión de renta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="promo-section on-dark">
+  <div class="container">
+    <div class="promo-banner">
+      <img src="img/promo-mineria-iluminacion.png" alt="Torre de iluminación y compresor en mina">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="device-showcase">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Diseño responsivo</div>
+      <h2>Se ve bien en cualquier pantalla</h2>
+      <p>El sitio se adapta automáticamente a computadora, tablet y celular — así lo vería un cliente entrando desde cualquier dispositivo.</p>
+    </div>
+    <div class="device-row">
+      <div class="device device-desktop">
+        <div class="device-frame">
+          <div class="device-screen"><iframe src="index.html?preview=1" title="Vista en PC" loading="lazy"></iframe></div>
+        </div>
+        <div class="device-desktop-stand"></div>
+        <div class="device-desktop-base"></div>
+        <div class="device-label"><span class="dot"></span>PC / Escritorio</div>
+      </div>
+      <div class="device device-tablet">
+        <div class="device-frame">
+          <div class="device-screen"><iframe src="index.html?preview=1" title="Vista en tablet" loading="lazy"></iframe></div>
+        </div>
+        <div class="device-label"><span class="dot"></span>Tablet</div>
+      </div>
+      <div class="device device-mobile">
+        <div class="device-frame">
+          <div class="device-screen"><iframe src="index.html?preview=1" title="Vista en celular" loading="lazy"></iframe></div>
+        </div>
+        <div class="device-label"><span class="dot"></span>Celular</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="promo-section">
+  <div class="container">
+    <div class="promo-pair">
+      <div class="promo-banner">
+        <img src="img/promo-torre-noche.png" alt="Torre de iluminación Generac en obra nocturna">
+      </div>
+      <div class="promo-banner">
+        <img src="img/promo-kaeser-compresor.png" alt="Compresor Kaeser portátil siendo transportado">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>¿Necesitas energía o aire comprimido para tu proyecto?</h2>
+      <p>Cuéntanos capacidad, fechas y ubicación — te respondemos el mismo día.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="cotizacion.html" class="btn btn-amber">Solicitar cotización</a>
+      <a id="wa-hero" href="#" class="btn btn-wa" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="margin-bottom:14px;">
+          <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+          <span class="brand-tagline">Energía siempre disponible</span>
+        </a>
+        <p>Renta de generadores, compresores Kaeser y torres de iluminación en Nuevo León.</p>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="equipos.html">Equipos disponibles</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="cotizacion.html">Cotización</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Equipos</h5>
+        <ul>
+          <li><a href="equipos.html#generador">Generadores</a></li>
+          <li><a href="equipos.html#compresor">Compresores Kaeser</a></li>
+          <li><a href="equipos.html#torre">Torres de iluminación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li>Tel / WhatsApp: 81 1571 2636</li>
+          <li>soporte.rentas01@sfindustrial.mx</li>
+          <li>Nazry Hasbún Hasbún 102, Bodega 2<br>66600 Cd. Apodaca, N.L.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sistemas de Fuerza Industrial S.A. de C.V.</span>
+      <span>Disponibilidad de inventario actualizada al día de hoy.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/equipos-data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // ---- estadísticas reales del inventario para el hero ----
+  const generadores = EQUIPOS.filter(e => e.tipo === "Generador");
+  const compresores = EQUIPOS.filter(e => e.tipo === "Compresor");
+  const torres = EQUIPOS.filter(e => e.tipo === "Torre de Iluminación");
+  const marcas = new Set(EQUIPOS.map(e => e.marca).filter(Boolean));
+  const capsGen = generadores.map(e => e.cap_valor).filter(Boolean);
+  const maxKw = Math.max(...capsGen);
+
+  document.getElementById("stat-strip").innerHTML = `
+    <div class="stat-cell">
+      <div class="stat-num">${EQUIPOS.length}</div>
+      <div class="stat-label">Equipos disponibles hoy</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">${maxKw}<span class="unit">KW</span></div>
+      <div class="stat-label">Capacidad máxima en flota</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">${marcas.size}</div>
+      <div class="stat-label">Marcas en inventario</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">${torres.length}</div>
+      <div class="stat-label">Torres de iluminación listas</div>
+    </div>
+  `;
+
+  const genCap = generadores.map(e=>e.cap_valor).filter(Boolean);
+  document.getElementById("cat-gen-range").textContent =
+    `${generadores.length} unidades · ${Math.min(...genCap)}–${Math.max(...genCap)} KW`;
+
+  const compCap = compresores.map(e=>e.cap_valor).filter(Boolean);
+  document.getElementById("cat-comp-range").textContent =
+    `${compresores.length} unidades · ${Math.min(...compCap)}–${Math.max(...compCap)} CFM`;
+
+  const torreCap = torres.map(e=>e.cap_valor).filter(Boolean);
+  document.getElementById("cat-torre-range").textContent =
+    `${torres.length} unidades · hasta ${Math.max(...torreCap)} KVA`;
+
+  document.getElementById("wa-hero").href = buildWhatsAppLink(
+    "Hola, quiero información sobre renta de equipo industrial (generadores / compresores / torres de iluminación)."
+  );
+
+  // evitar que la vitrina de dispositivos se anide dentro de sí misma
+  if (new URLSearchParams(window.location.search).get("preview") === "1") {
+    const showcase = document.getElementById("device-showcase");
+    if (showcase) showcase.remove();
+  }
+</script>
+</body>
+</html>

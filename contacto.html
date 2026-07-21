@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto | Sistemas de Fuerza Industrial</title>
+<meta name="description" content="Contacta a Sistemas de Fuerza Industrial en Cd. Apodaca, Nuevo León. Teléfono, WhatsApp, correo y ubicación.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+      <span class="brand-tagline">Energía siempre disponible</span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="equipos.html">Equipos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="cotizacion.html">Cotización</a></li>
+      <li><a href="contacto.html" class="active">Contacto</a></li>
+      <li><a href="cotizacion.html" class="nav-cta">Solicitar renta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" style="padding-bottom:56px;">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Contacto</div>
+    <div class="hero-lema">Energía siempre disponible</div>
+    <h1 style="font-size:clamp(28px,4.4vw,44px);">Habla directo <em>con el departamento de rentas</em></h1>
+    <p class="lead">Atención por teléfono, WhatsApp o correo. También puedes visitarnos en nuestra bodega en Cd. Apodaca.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="contact-card">
+          <h4>Teléfono y WhatsApp</h4>
+          <p>81 1571 2636</p>
+        </div>
+        <div class="contact-card">
+          <h4>Correo</h4>
+          <p>soporte.rentas01@sfindustrial.mx</p>
+        </div>
+        <div class="contact-card">
+          <h4>Dirección</h4>
+          <p>Sistemas de Fuerza Industrial S.A. de C.V.<br>
+          Nazry Hasbún Hasbún 102, Bodega 2<br>
+          66600 Cd. Apodaca, N.L., México</p>
+        </div>
+        <div class="form-actions" style="margin-top:24px;">
+          <a id="wa-contact" href="#" class="btn btn-wa" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          <a href="cotizacion.html" class="btn btn-primary">Ir al formulario de cotización</a>
+        </div>
+      </div>
+
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps?q=Nazry+Hasb%C3%BAn+Hasb%C3%BAn+102,+66600+Cd.+Apodaca,+N.L.&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de Sistemas de Fuerza Industrial">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="margin-bottom:14px;">
+          <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+          <span class="brand-tagline">Energía siempre disponible</span>
+        </a>
+        <p>Renta de generadores, compresores Kaeser y torres de iluminación en Nuevo León.</p>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="equipos.html">Equipos disponibles</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="cotizacion.html">Cotización</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Equipos</h5>
+        <ul>
+          <li><a href="equipos.html#generador">Generadores</a></li>
+          <li><a href="equipos.html#compresor">Compresores Kaeser</a></li>
+          <li><a href="equipos.html#torre">Torres de iluminación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li>Tel / WhatsApp: 81 1571 2636</li>
+          <li>soporte.rentas01@sfindustrial.mx</li>
+          <li>Nazry Hasbún Hasbún 102, Bodega 2<br>66600 Cd. Apodaca, N.L.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sistemas de Fuerza Industrial S.A. de C.V.</span>
+      <span>Disponibilidad de inventario actualizada al día de hoy.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById("wa-contact").href = buildWhatsAppLink(
+    "Hola, quisiera más información sobre renta de equipo industrial."
+  );
+</script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitar Cotización | Sistemas de Fuerza Industrial</title>
+<meta name="description" content="Solicita cotización de renta de generadores, compresores Kaeser o torres de iluminación en Nuevo León. Respuesta el mismo día.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+      <span class="brand-tagline">Energía siempre disponible</span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="equipos.html">Equipos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="cotizacion.html" class="active">Cotización</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="cotizacion.html" class="nav-cta">Solicitar renta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" style="padding-bottom:56px;">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Cotización de renta</div>
+    <div class="hero-lema">Energía siempre disponible</div>
+    <h1 style="font-size:clamp(28px,4.4vw,44px);">Cuéntanos qué necesitas <em>y te respondemos hoy</em></h1>
+    <p class="lead">Completa el formulario y envíalo por WhatsApp o correo — sin registros ni esperas.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container" style="max-width:820px;">
+    <div class="form-card">
+      <form id="quote-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="nombre">Nombre completo <span class="req">*</span></label>
+            <input type="text" id="nombre" required>
+          </div>
+          <div class="field">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="telefono">Teléfono / WhatsApp <span class="req">*</span></label>
+            <input type="tel" id="telefono" required placeholder="81 0000 0000">
+          </div>
+          <div class="field">
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" placeholder="tu@empresa.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="tipo-equipo">Tipo de equipo <span class="req">*</span></label>
+            <select id="tipo-equipo" required>
+              <option value="">Selecciona una opción</option>
+              <option value="Generador">Generador</option>
+              <option value="Compresor">Compresor Kaeser</option>
+              <option value="Torre de Iluminación">Torre de iluminación</option>
+              <option value="No estoy seguro">No estoy seguro / necesito asesoría</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="capacidad">Capacidad aproximada</label>
+            <input type="text" id="capacidad" placeholder="ej. 100 KW, 375 CFM">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="fecha-inicio">Fecha de inicio</label>
+            <input type="date" id="fecha-inicio">
+          </div>
+          <div class="field">
+            <label for="duracion">Duración estimada</label>
+            <input type="text" id="duracion" placeholder="ej. 2 semanas, 3 meses">
+          </div>
+        </div>
+
+        <div class="field field-full" style="margin-bottom:18px;">
+          <label for="ubicacion">Ubicación del proyecto</label>
+          <input type="text" id="ubicacion" placeholder="Municipio / dirección de obra">
+        </div>
+
+        <div class="field field-full" style="margin-bottom:8px;">
+          <label for="mensaje">Detalles adicionales</label>
+          <textarea id="mensaje" placeholder="Voltaje requerido, condiciones de acceso a obra, etc."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-wa" id="submit-wa">Enviar por WhatsApp</button>
+          <button type="button" class="btn btn-outline" id="submit-mail">Enviar por correo</button>
+        </div>
+        <p class="form-note">Al enviar, se abrirá WhatsApp o tu app de correo con el mensaje ya redactado — revísalo antes de enviarlo. Campos con <span class="req">*</span> son obligatorios.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="margin-bottom:14px;">
+          <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+          <span class="brand-tagline">Energía siempre disponible</span>
+        </a>
+        <p>Renta de generadores, compresores Kaeser y torres de iluminación en Nuevo León.</p>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="equipos.html">Equipos disponibles</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="cotizacion.html">Cotización</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Equipos</h5>
+        <ul>
+          <li><a href="equipos.html#generador">Generadores</a></li>
+          <li><a href="equipos.html#compresor">Compresores Kaeser</a></li>
+          <li><a href="equipos.html#torre">Torres de iluminación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li>Tel / WhatsApp: 81 1571 2636</li>
+          <li>soporte.rentas01@sfindustrial.mx</li>
+          <li>Nazry Hasbún Hasbún 102, Bodega 2<br>66600 Cd. Apodaca, N.L.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sistemas de Fuerza Industrial S.A. de C.V.</span>
+      <span>Disponibilidad de inventario actualizada al día de hoy.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // ---- prefill desde catálogo (?tipo=&marca=&cap=) ----
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("tipo")) {
+    const tipoSelect = document.getElementById("tipo-equipo");
+    const val = params.get("tipo");
+    if ([...tipoSelect.options].some(o => o.value === val)) tipoSelect.value = val;
+  }
+  if (params.get("cap")) document.getElementById("capacidad").value = params.get("cap");
+  if (params.get("marca")) {
+    const msg = document.getElementById("mensaje");
+    msg.value = `Interesado en unidad marca ${params.get("marca")}.`;
+  }
+
+  function buildMessage() {
+    const get = id => document.getElementById(id).value.trim();
+    const lines = [
+      "Solicitud de cotización — Sistemas de Fuerza Industrial",
+      `Nombre: ${get("nombre") || "-"}`,
+      `Empresa: ${get("empresa") || "-"}`,
+      `Teléfono: ${get("telefono") || "-"}`,
+      `Correo: ${get("correo") || "-"}`,
+      `Tipo de equipo: ${get("tipo-equipo") || "-"}`,
+      `Capacidad aproximada: ${get("capacidad") || "-"}`,
+      `Fecha de inicio: ${get("fecha-inicio") || "-"}`,
+      `Duración estimada: ${get("duracion") || "-"}`,
+      `Ubicación del proyecto: ${get("ubicacion") || "-"}`,
+      `Detalles: ${get("mensaje") || "-"}`,
+    ];
+    return lines.join("\n");
+  }
+
+  function validate() {
+    const nombre = document.getElementById("nombre");
+    const telefono = document.getElementById("telefono");
+    const tipo = document.getElementById("tipo-equipo");
+    let ok = true;
+    [nombre, telefono, tipo].forEach(f => {
+      if (!f.value.trim()) { f.style.borderColor = "var(--status-red)"; ok = false; }
+      else { f.style.borderColor = ""; }
+    });
+    if (!ok) alert("Por favor completa nombre, teléfono y tipo de equipo antes de enviar.");
+    return ok;
+  }
+
+  document.getElementById("quote-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    window.open(buildWhatsAppLink(buildMessage()), "_blank");
+  });
+
+  document.getElementById("submit-mail").addEventListener("click", () => {
+    if (!validate()) return;
+    window.location.href = buildMailtoLink("Solicitud de cotización — Renta de equipo", buildMessage());
+  });
+</script>
+</body>
+</html>

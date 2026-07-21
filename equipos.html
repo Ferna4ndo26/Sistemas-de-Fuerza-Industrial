@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equipos Disponibles — Generadores, Compresores Kaeser y Torres de Iluminación | Sistemas de Fuerza Industrial</title>
+<meta name="description" content="Catálogo de equipo disponible para renta: generadores diésel, compresores Kaeser y torres de iluminación en Nuevo León.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+      <span class="brand-tagline">Energía siempre disponible</span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="equipos.html" class="active">Equipos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="cotizacion.html">Cotización</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="cotizacion.html" class="nav-cta">Solicitar renta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" style="padding-bottom:56px;">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Inventario en tiempo real</div>
+    <div class="hero-lema">Energía siempre disponible</div>
+    <h1 style="font-size:clamp(28px,4.4vw,44px);">Equipos disponibles <em>para renta</em></h1>
+    <p class="lead">Filtra por tipo, marca o capacidad. Cada ficha muestra las especificaciones reales de la unidad en patio.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-bottom:0;">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Información técnica</div>
+      <h2>Qué esperar de cada categoría</h2>
+      <p>Rangos y especificaciones calculados a partir del inventario disponible hoy.</p>
+    </div>
+    <div class="techspec-grid" id="techspec-grid"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container">
+
+    <div class="catalog-toolbar">
+      <div class="tb-group" id="tipo-filters">
+        <button class="tb-chip active" data-tipo="all">Todos</button>
+        <button class="tb-chip" data-tipo="Generador">Generadores</button>
+        <button class="tb-chip" data-tipo="Compresor">Compresores</button>
+        <button class="tb-chip" data-tipo="Torre de Iluminación">Torres de iluminación</button>
+      </div>
+      <input type="text" id="search" class="tb-search" placeholder="Buscar por marca o modelo…">
+    </div>
+
+    <div class="tb-count" id="result-count"></div>
+    <div class="equip-grid" id="equip-grid"></div>
+    <div class="empty-state" id="empty-state" style="display:none;">
+      No encontramos equipo con ese filtro. Prueba con otra marca o categoría, o
+      <a href="cotizacion.html" style="color:var(--power-blue);font-weight:600;">pídenos disponibilidad directamente</a>.
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>¿No ves el equipo exacto que necesitas?</h2>
+      <p>Tenemos unidades adicionales en mantenimiento y prospección — pregúntanos por capacidad específica.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="cotizacion.html" class="btn btn-amber">Solicitar cotización</a>
+      <a id="wa-cta" href="#" class="btn btn-wa" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="margin-bottom:14px;">
+          <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+          <span class="brand-tagline">Energía siempre disponible</span>
+        </a>
+        <p>Renta de generadores, compresores Kaeser y torres de iluminación en Nuevo León.</p>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="equipos.html">Equipos disponibles</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="cotizacion.html">Cotización</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Equipos</h5>
+        <ul>
+          <li><a href="equipos.html#generador">Generadores</a></li>
+          <li><a href="equipos.html#compresor">Compresores Kaeser</a></li>
+          <li><a href="equipos.html#torre">Torres de iluminación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li>Tel / WhatsApp: 81 1571 2636</li>
+          <li>soporte.rentas01@sfindustrial.mx</li>
+          <li>Nazry Hasbún Hasbún 102, Bodega 2<br>66600 Cd. Apodaca, N.L.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sistemas de Fuerza Industrial S.A. de C.V.</span>
+      <span>Disponibilidad de inventario actualizada al día de hoy.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="ficha-overlay" id="ficha-overlay">
+  <div class="ficha-modal">
+    <div class="ficha-modal-head">
+      <button type="button" class="ficha-close" onclick="closeFicha()" aria-label="Cerrar">✕</button>
+      <div class="ficha-tipo" id="ficha-tipo">Generador</div>
+      <h3 id="ficha-titulo">Marca</h3>
+      <div class="ficha-modelo" id="ficha-modelo-txt"></div>
+    </div>
+    <div class="ficha-body" id="ficha-body"></div>
+  </div>
+</div>
+
+<div class="ficha-overlay" id="ficha-overlay" onclick="if(event.target===this) closeFicha()">
+  <div class="ficha-modal">
+    <div class="ficha-modal-head">
+      <button type="button" class="ficha-close" onclick="closeFicha()" aria-label="Cerrar">✕</button>
+      <div class="ficha-tipo" id="ficha-tipo">Generador</div>
+      <h3 id="ficha-titulo">—</h3>
+      <div class="ficha-modelo" id="ficha-modelo-txt"></div>
+    </div>
+    <div class="ficha-body" id="ficha-body"></div>
+  </div>
+</div>
+
+<script src="js/equipos-data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const grid = document.getElementById("equip-grid");
+  const countEl = document.getElementById("result-count");
+  const emptyState = document.getElementById("empty-state");
+  const searchInput = document.getElementById("search");
+  const chips = document.querySelectorAll(".tb-chip");
+
+  let activeTipo = "all";
+
+  // permitir llegar con #generador / #compresor / #torre desde otras páginas
+  const hashMap = { generador: "Generador", compresor: "Compresor", torre: "Torre de Iluminación" };
+  const hash = window.location.hash.replace("#", "");
+  if (hashMap[hash]) activeTipo = hashMap[hash];
+
+  function render() {
+    const q = searchInput.value.trim().toLowerCase();
+    const filtered = EQUIPOS.filter(e => {
+      const tipoMatch = activeTipo === "all" || e.tipo === activeTipo;
+      const text = `${e.marca || ""} ${e.modelo || ""} ${e.tipo}`.toLowerCase();
+      const qMatch = !q || text.includes(q);
+      return tipoMatch && qMatch;
+    });
+
+    countEl.textContent = `${filtered.length} equipo${filtered.length === 1 ? "" : "s"} disponible${filtered.length === 1 ? "" : "s"}`;
+    grid.innerHTML = filtered.map(nameplateHTML).join("");
+    emptyState.style.display = filtered.length ? "none" : "block";
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      chips.forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      activeTipo = chip.dataset.tipo;
+      render();
+    });
+    if (hashMap[hash] && chip.dataset.tipo === hashMap[hash]) {
+      chips.forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+    }
+  });
+
+  searchInput.addEventListener("input", render);
+  render();
+
+  document.getElementById("wa-cta").href = buildWhatsAppLink(
+    "Hola, estoy buscando un equipo específico que no vi en el catálogo. ¿Me pueden ayudar?"
+  );
+
+  // ---- ficha técnica por categoría, calculada del inventario real ----
+  const CATS = [
+    {
+      tipo: "Generador",
+      desc: "Equipos diésel para respaldo o suministro continuo de energía en obra, planta o evento. La mayoría admite ajuste de voltaje y frecuencia según el proyecto.",
+    },
+    {
+      tipo: "Compresor",
+      desc: "Compresores de tornillo montados sobre remolque, para herramienta neumática, sandblasteo y procesos que requieren aire a presión constante.",
+    },
+    {
+      tipo: "Torre de Iluminación",
+      desc: "Mástiles telescópicos con reflectores LED para iluminar obra nocturna, eventos o zonas de trabajo temporal.",
+    },
+  ];
+
+  const techGrid = document.getElementById("techspec-grid");
+  techGrid.innerHTML = CATS.map(cat => {
+    const items = EQUIPOS.filter(e => e.tipo === cat.tipo);
+    const caps = items.map(e => e.cap_valor).filter(Boolean);
+    const unit = items.find(e => e.cap_unidad)?.cap_unidad || "";
+    const brands = [...new Set(items.map(e => e.marca).filter(Boolean))];
+    const ajustableV = items.filter(e => e.cambio_voltaje).length;
+    const ajustableF = items.filter(e => e.cambio_frecuencia).length;
+
+    return `
+    <div class="techspec-card">
+      <h3>${cat.tipo === "Torre de Iluminación" ? "Torres de iluminación" : cat.tipo + "s"}</h3>
+      <div class="techspec-sub">${items.length} unidades disponibles</div>
+      <p>${cat.desc}</p>
+      <div class="techspec-stats">
+        <div class="techspec-stat"><b>${caps.length ? Math.min(...caps) : "—"}–${caps.length ? Math.max(...caps) : "—"}</b><span>${unit} rango</span></div>
+        <div class="techspec-stat"><b>${brands.length}</b><span>Marcas</span></div>
+        <div class="techspec-stat"><b>${ajustableV}</b><span>Con voltaje ajustable</span></div>
+        <div class="techspec-stat"><b>${ajustableF}</b><span>Con frecuencia ajustable</span></div>
+      </div>
+      <div class="techspec-brands">
+        <span class="lbl">Marcas en esta categoría</span>
+        <div class="badge-row">${brands.map(b => `<span class="badge" style="color:var(--steel-500);border-color:#dcded8;">${b}</span>`).join("")}</div>
+      </div>
+    </div>`;
+  }).join("");
+</script>
+</body>
+</html>
