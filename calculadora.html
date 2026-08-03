@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Costo de Inactividad | Sistemas de Fuerza Industrial</title>
+<meta name="description" content="Calcula cuánto le cuesta a tu planta un corte de energía y compáralo contra el costo de rentar un generador de respaldo con SFI Industrial.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* --- Bloque propio de la calculadora, con prefijo calc- para no chocar con style.css --- */
+  .calc-card{
+    background:#fff;
+    border-radius:10px;
+    padding:26px 28px;
+    margin-bottom:20px;
+  }
+  .calc-card h2{
+    font-size:15px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin:0 0 4px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .calc-card h2 .calc-tag{
+    background:#1F69B4;
+    color:#fff;
+    font-size:11px;
+    letter-spacing:0;
+    text-transform:none;
+    padding:2px 8px;
+    border-radius:3px;
+  }
+  .calc-card p.calc-hint{font-size:13px;color:#666;margin:0 0 18px;}
+
+  .calc-results{display:none;}
+  .calc-results.show{display:block;animation:calcFade .3s ease;}
+  @keyframes calcFade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .calc-hero-result{
+    background:linear-gradient(135deg,#154a80,#1F69B4);
+    border-radius:10px;
+    padding:24px 26px;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:16px;
+  }
+  .calc-hero-result .calc-label{
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    opacity:.85;
+  }
+  .calc-hero-result .calc-big{
+    font-weight:700;
+    font-size:clamp(28px,6vw,42px);
+    line-height:1;
+    margin-top:4px;
+  }
+  .calc-hero-result .calc-sub{font-size:13px;opacity:.9;margin-top:4px;}
+
+  .calc-stat-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:16px;
+  }
+  @media(max-width:560px){.calc-stat-grid{grid-template-columns:1fr;}}
+  .calc-stat-card{
+    background:#fff;
+    border-left:5px solid #1F69B4;
+    border-radius:6px;
+    padding:14px 16px;
+  }
+  .calc-stat-card.calc-warn{border-left-color:#DA2027;}
+  .calc-stat-card .calc-k{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#777;}
+  .calc-stat-card .calc-v{font-weight:700;font-size:22px;color:#1c2126;margin-top:2px;}
+
+  .calc-verdict{
+    background:#1c2126;
+    color:#e6e9ec;
+    border-radius:8px;
+    padding:18px 20px;
+    font-size:14.5px;
+    line-height:1.55;
+    margin-bottom:18px;
+  }
+  .calc-verdict b{color:#7fc1ff;}
+  .calc-verdict.calc-good b{color:#7fe0a0;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+      <span class="brand-tagline">Energía siempre disponible</span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="equipos.html">Equipos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="cotizacion.html">Cotización</a></li>
+      <li><a href="calculadora.html" class="active">Calculadora</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="cotizacion.html" class="nav-cta">Solicitar renta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" style="padding-bottom:56px;">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Herramienta de decisión</div>
+    <div class="hero-lema">Energía siempre disponible</div>
+    <h1 style="font-size:clamp(28px,4.4vw,44px);">¿Cuánto te cuesta <em>un corte de energía?</em></h1>
+    <p class="lead">Calcula el impacto real de la inactividad en tu planta y compáralo contra el costo de tener un generador de respaldo en renta.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container" style="max-width:820px;">
+
+    <div class="form-card calc-card">
+      <h2><span class="calc-tag">01</span>Impacto de un corte de energía</h2>
+      <p class="calc-hint">Con estos datos calculamos el costo por evento y el costo anual estimado.</p>
+      <div class="form-row">
+        <div class="field">
+          <label for="ingresoHora">Ingreso o producción perdida por hora (MXN/h)</label>
+          <input type="number" id="ingresoHora" placeholder="Ej. 45000" min="0">
+        </div>
+        <div class="field">
+          <label for="nominaHora">Nómina ociosa durante el corte (MXN/h)</label>
+          <input type="number" id="nominaHora" placeholder="Ej. 8000" min="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="horasCorte">Duración promedio de un corte (horas)</label>
+          <input type="number" id="horasCorte" placeholder="Ej. 3" min="0" step="0.5">
+        </div>
+        <div class="field">
+          <label for="eventosAno">Cortes estimados por año (eventos)</label>
+          <input type="number" id="eventosAno" placeholder="Ej. 6" min="0">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card calc-card">
+      <h2><span class="calc-tag">02</span>Costo de tener respaldo</h2>
+      <p class="calc-hint">Si ya tienes una cotización nuestra, ingrésala aquí. Si no, déjalo en blanco y verás solo el costo de no tener respaldo.</p>
+      <div class="field field-full">
+        <label for="rentaMensual">Renta mensual de generador de respaldo (MXN/mes, opcional)</label>
+        <input type="number" id="rentaMensual" placeholder="Ej. 35000" min="0">
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-amber" id="btn-calcular">Calcular costo de inactividad</button>
+      </div>
+    </div>
+
+    <div class="calc-results" id="calc-resultados">
+
+      <div class="calc-hero-result">
+        <div>
+          <div class="calc-label">Costo anual estimado de inactividad</div>
+          <div class="calc-big" id="calcCostoAnual">$0</div>
+          <div class="calc-sub" id="calcCostoAnualSub"></div>
+        </div>
+      </div>
+
+      <div class="calc-stat-grid">
+        <div class="calc-stat-card calc-warn">
+          <div class="calc-k">Costo por evento</div>
+          <div class="calc-v" id="calcCostoEvento">$0</div>
+        </div>
+        <div class="calc-stat-card">
+          <div class="calc-k">Costo anual de renta (respaldo)</div>
+          <div class="calc-v" id="calcCostoRentaAnual">—</div>
+        </div>
+      </div>
+
+      <div class="calc-verdict" id="calcVeredicto"></div>
+
+      <div class="form-actions">
+        <a href="cotizacion.html" class="btn btn-amber">Solicitar cotización de generador →</a>
+        <button type="button" class="btn btn-wa" id="btn-wa-resultado">Enviar resultado por WhatsApp</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="margin-bottom:14px;">
+          <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+          <span class="brand-tagline">Energía siempre disponible</span>
+        </a>
+        <p>Renta de generadores, compresores Kaeser y torres de iluminación en Nuevo León.</p>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="equipos.html">Equipos disponibles</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="cotizacion.html">Cotización</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Equipos</h5>
+        <ul>
+          <li><a href="equipos.html#generador">Generadores</a></li>
+          <li><a href="equipos.html#compresor">Compresores Kaeser</a></li>
+          <li><a href="equipos.html#torre">Torres de iluminación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li>Tel / WhatsApp: 81 1571 2636</li>
+          <li>soporte.rentas01@sfindustrial.mx</li>
+          <li>Nazry Hasbún Hasbún 102, Bodega 2<br>66600 Cd. Apodaca, N.L.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sistemas de Fuerza Industrial S.A. de C.V.</span>
+      <span>Disponibilidad de inventario actualizada al día de hoy.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function calcFmt(n){
+  return '$' + Math.round(n).toLocaleString('es-MX');
+}
+
+let calcUltimoResultado = "";
+
+function calcCalcular(){
+  const ingresoHora = parseFloat(document.getElementById('ingresoHora').value) || 0;
+  const nominaHora = parseFloat(document.getElementById('nominaHora').value) || 0;
+  const horasCorte = parseFloat(document.getElementById('horasCorte').value) || 0;
+  const eventosAno = parseFloat(document.getElementById('eventosAno').value) || 0;
+  const rentaMensual = parseFloat(document.getElementById('rentaMensual').value) || 0;
+
+  const costoPorHora = ingresoHora + nominaHora;
+  const costoPorEvento = costoPorHora * horasCorte;
+  const costoAnualInactividad = costoPorEvento * eventosAno;
+  const costoRentaAnual = rentaMensual * 12;
+
+  document.getElementById('calcCostoAnual').textContent = calcFmt(costoAnualInactividad);
+  document.getElementById('calcCostoEvento').textContent = calcFmt(costoPorEvento);
+  document.getElementById('calcCostoAnualSub').textContent =
+    eventosAno > 0
+      ? `Basado en ${eventosAno} corte(s) al año de ${horasCorte} h cada uno`
+      : 'Agrega el número de cortes estimados para ver el total anual';
+
+  const veredictoEl = document.getElementById('calcVeredicto');
+  const rentaAnualEl = document.getElementById('calcCostoRentaAnual');
+  let veredictoTexto = "";
+
+  if(rentaMensual > 0){
+    rentaAnualEl.textContent = calcFmt(costoRentaAnual);
+    const ahorro = costoAnualInactividad - costoRentaAnual;
+    if(ahorro > 0){
+      veredictoEl.classList.add('calc-good');
+      veredictoTexto = `Con un generador de respaldo en renta, tu planta se ahorraría <b>${calcFmt(ahorro)} al año</b> comparado con el costo de quedarte sin energía.`;
+    } else {
+      veredictoEl.classList.remove('calc-good');
+      veredictoTexto = `Con la frecuencia de cortes indicada, el costo de renta anual (<b>${calcFmt(costoRentaAnual)}</b>) es mayor al costo estimado de inactividad. Contáctanos para ajustar el dimensionamiento del equipo.`;
+    }
+  } else {
+    rentaAnualEl.textContent = '—';
+    veredictoEl.classList.remove('calc-good');
+    veredictoTexto = `Cada corte le cuesta a tu operación aproximadamente <b>${calcFmt(costoPorEvento)}</b>. Agrega una renta mensual arriba para ver cuánto ahorrarías, o solicita una cotización directamente.`;
+  }
+  veredictoEl.innerHTML = veredictoTexto;
+
+  calcUltimoResultado =
+    "Resultado de calculadora de costo de inactividad — SFI Industrial\n" +
+    `Costo por evento: ${calcFmt(costoPorEvento)}\n` +
+    `Costo anual estimado de inactividad: ${calcFmt(costoAnualInactividad)}\n` +
+    (rentaMensual > 0 ? `Costo anual de renta de respaldo: ${calcFmt(costoRentaAnual)}\n` : "") +
+    "Quisiera una cotización de generador de respaldo para mi planta.";
+
+  document.getElementById('calc-resultados').classList.add('show');
+  document.getElementById('calc-resultados').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+document.getElementById('btn-calcular').addEventListener('click', calcCalcular);
+
+document.getElementById('btn-wa-resultado').addEventListener('click', () => {
+  window.open(buildWhatsAppLink(calcUltimoResultado), "_blank");
+});
+</script>
+</body>
+</html>
