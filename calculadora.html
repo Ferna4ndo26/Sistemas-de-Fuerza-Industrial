@@ -282,12 +282,12 @@ function calcCalcular(){
       veredictoTexto = `Con un generador de respaldo en renta, tu planta se ahorraría <b>${calcFmt(ahorro)} al año</b> comparado con el costo de quedarte sin energía.`;
     } else {
       veredictoEl.classList.remove('calc-good');
-      veredictoTexto = `Con la frecuencia de cortes indicada, el costo de renta anual (<b>${calcFmt(costoRentaAnual)}</b>) es mayor al costo estimado de inactividad. Contáctanos para ajustar el dimensionamiento del equipo.`;
+      veredictoTexto = `Con la frecuencia de cortes indicada, el costo de renta anual (<b>${calcFmt(costoRentaAnual)}</b>) es mayor al costo estimado de inactividad. Contáctanos para ajustar el dimensionamiento del generador que necesitas.`;
     }
   } else {
     rentaAnualEl.textContent = '—';
     veredictoEl.classList.remove('calc-good');
-    veredictoTexto = `Cada corte le cuesta a tu operación aproximadamente <b>${calcFmt(costoPorEvento)}</b>. Agrega una renta mensual arriba para ver cuánto ahorrarías, o solicita una cotización directamente.`;
+    veredictoTexto = `Cada corte le cuesta a tu operación aproximadamente <b>${calcFmt(costoPorEvento)}</b>. Agrega una renta mensual arriba para ver cuánto ahorrarías, o solicita una cotización del generador de respaldo que necesitas.`;
   }
   veredictoEl.innerHTML = veredictoTexto;
 
