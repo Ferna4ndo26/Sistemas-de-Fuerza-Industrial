@@ -251,6 +251,10 @@ function calcFmt(n){
 
 let calcUltimoResultado = "";
 
+function buildWhatsAppLink(text){
+  return "https://wa.me/?text=" + encodeURIComponent(text);
+}
+
 function calcCalcular(){
   const ingresoHora = parseFloat(document.getElementById('ingresoHora').value) || 0;
   const nominaHora = parseFloat(document.getElementById('nominaHora').value) || 0;
@@ -274,21 +278,22 @@ function calcCalcular(){
   const rentaAnualEl = document.getElementById('calcCostoRentaAnual');
   let veredictoTexto = "";
 
-  if(rentaMensual > 0){
+  if (rentaMensual > 0) {
     rentaAnualEl.textContent = calcFmt(costoRentaAnual);
     const ahorro = costoAnualInactividad - costoRentaAnual;
-    if(ahorro > 0){
+    if (ahorro > 0) {
       veredictoEl.classList.add('calc-good');
       veredictoTexto = `Con un generador de respaldo en renta, tu planta se ahorraría <b>${calcFmt(ahorro)} al año</b> comparado con el costo de quedarte sin energía.`;
     } else {
       veredictoEl.classList.remove('calc-good');
-      veredictoTexto = `Con la frecuencia de cortes indicada, el costo de renta anual (<b>${calcFmt(costoRentaAnual)}</b>) es mayor al costo estimado de inactividad. Contáctanos para ajustar el dimensionamiento del generador que necesitas.`;
+      veredictoTexto = `Con la frecuencia de cortes indicada, el costo de renta anual (<b>${calcFmt(costoRentaAnual)}</b>) es mayor o igual al costo estimado de inactividad. Contáctanos para ajustar el dimensionamiento o revisar alternativas.`;
     }
   } else {
     rentaAnualEl.textContent = '—';
     veredictoEl.classList.remove('calc-good');
-    veredictoTexto = `Cada corte le cuesta a tu operación aproximadamente <b>${calcFmt(costoPorEvento)}</b>. Agrega una renta mensual arriba para ver cuánto ahorrarías, o solicita una cotización del generador de respaldo que necesitas.`;
+    veredictoTexto = `Cada corte le cuesta a tu operación aproximadamente <b>${calcFmt(costoPorEvento)}</b>. Agrega una renta mensual arriba para ver cuánto ahorrarías, o solicita una cotización de generador de respaldo.`;
   }
+
   veredictoEl.innerHTML = veredictoTexto;
 
   calcUltimoResultado =
