@@ -28,9 +28,4 @@ El archivo `js/equipos-data.js` se genera a partir de dos Excel:
 
 Para actualizar, comparte los Excel actualizados.
 
-## Publicar con GitHub Pages
-
-Este repositorio está listo para GitHub Pages: Settings → Pages → Deploy from branch → `main` / `(root)`.
-
----
 © Sistemas de Fuerza Industrial S.A. de C.V.
