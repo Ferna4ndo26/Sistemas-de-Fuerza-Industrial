@@ -1,0 +1,83 @@
+<!--
+  INTEGRACIÓN (3 pasos):
+  1) En el <head> de index.html:   <link rel="stylesheet" href="herramientas.css">
+  2) Antes de </body> en index.html: <script src="herramientas.js" defer></script>
+  3) Pega esta sección en index.html donde quieras que aparezca (por ejemplo, antes del footer).
+  Opcional: agrega un enlace en tu menú:  <a href="#herramientas">Herramientas</a>
+-->
+<section class="sfi-tools" id="herramientas" aria-labelledby="sfi-tools-title">
+  <header class="sfi-head">
+    <h2 id="sfi-tools-title">Planea tu proyecto en minutos</h2>
+    <p>Calcula qué generador necesitas, compara rentar contra comprar o deja que te guiemos al equipo correcto.</p>
+  </header>
+
+  <div class="sfi-tabs" role="tablist" aria-label="Herramientas">
+    <button type="button" role="tab" class="sfi-tab" id="sfi-t-gen" aria-controls="sfi-p-gen" aria-selected="true">Dimensionador de generador</button>
+    <button type="button" role="tab" class="sfi-tab" id="sfi-t-cmp" aria-controls="sfi-p-cmp" aria-selected="false" tabindex="-1">Rentar o comprar</button>
+    <button type="button" role="tab" class="sfi-tab" id="sfi-t-sel" aria-controls="sfi-p-sel" aria-selected="false" tabindex="-1">Encuentra tu equipo</button>
+  </div>
+
+  <!-- 1. DIMENSIONADOR -->
+  <div class="sfi-panel" id="sfi-p-gen" role="tabpanel" aria-labelledby="sfi-t-gen">
+    <h3>¿Qué generador necesito?</h3>
+    <p class="sfi-lead">Agrega las cargas que quieres respaldar. Si no conoces un dato, búscalo en la placa del equipo.</p>
+    <div class="sfi-rows-head" aria-hidden="true">
+      <span>Tipo de carga</span><span>Cantidad</span><span>Potencia</span><span>Unidad</span><span></span>
+    </div>
+    <div id="sfi-rows"></div>
+    <button type="button" class="sfi-btn sfi-btn--ghost" id="sfi-add">Agregar otra carga</button>
+
+    <div class="sfi-opts">
+      <label>Tipo de arranque de los motores
+        <select id="sfi-arranque">
+          <option value="3">Directo (el más común)</option>
+          <option value="1.8">Estrella-delta</option>
+          <option value="1.5">Arrancador suave</option>
+          <option value="1.1">Variador de frecuencia</option>
+        </select>
+      </label>
+      <label>¿Cuánto funciona al mismo tiempo?
+        <select id="sfi-simult">
+          <option value="100">Todo a la vez</option>
+          <option value="85">Casi todo (85%)</option>
+          <option value="70">Solo una parte (70%)</option>
+        </select>
+      </label>
+    </div>
+    <button type="button" class="sfi-btn" id="sfi-gen-btn">Calcular capacidad</button>
+    <div class="sfi-out" id="sfi-gen-out" aria-live="polite"></div>
+  </div>
+
+  <!-- 2. RENTAR VS COMPRAR -->
+  <div class="sfi-panel" id="sfi-p-cmp" role="tabpanel" aria-labelledby="sfi-t-cmp" hidden>
+    <h3>¿Te conviene rentar o comprar?</h3>
+    <p class="sfi-lead">Captura tus números y ve cuánto costaría cada opción en el periodo que elijas.</p>
+    <div class="sfi-fields">
+      <label>Días de uso al año
+        <input type="number" id="sfi-c-dias" min="1" max="365" inputmode="numeric" placeholder="Ej. 30">
+      </label>
+      <label>Tarifa de renta por día (MXN)
+        <input type="number" id="sfi-c-renta" min="1" inputmode="decimal" placeholder="Pídela a SFI por WhatsApp">
+      </label>
+      <label>Precio de compra del equipo (MXN)
+        <input type="number" id="sfi-c-compra" min="1" inputmode="decimal" placeholder="Ej. 450000">
+      </label>
+      <label>Años a evaluar
+        <input type="number" id="sfi-c-anios" min="1" max="20" value="5" inputmode="numeric">
+      </label>
+      <label>Mantenimiento, seguro y almacén (% anual del precio)
+        <input type="number" id="sfi-c-mant" min="0" max="50" value="5" inputmode="decimal">
+      </label>
+      <label>Valor de reventa al final (% del precio)
+        <input type="number" id="sfi-c-resid" min="0" max="100" value="30" inputmode="decimal">
+      </label>
+    </div>
+    <button type="button" class="sfi-btn" id="sfi-cmp-btn">Comparar costos</button>
+    <div class="sfi-out" id="sfi-cmp-out" aria-live="polite"></div>
+  </div>
+
+  <!-- 3. SELECTOR GUIADO -->
+  <div class="sfi-panel" id="sfi-p-sel" role="tabpanel" aria-labelledby="sfi-t-sel" hidden>
+    <div id="sfi-sel" aria-live="polite"></div>
+  </div>
+</section>
