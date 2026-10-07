@@ -1,3 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Costo de Inactividad — Sistemas de Fuerza Industrial</title>
+<meta name="description" content="Calcula el costo de inactividad en tu planta por falta de energía. Compara con renta de generadores de respaldo.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .calc-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  .calc-form-group {
+    margin-bottom: 24px;
+  }
+
+  .calc-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .calc-form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  .calc-form-group input:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+  }
+
+  .calc-actions {
+    display: flex;
+    gap: 12px;
+    margin: 32px 0;
+  }
+
+  #btn-calcular {
+    flex: 1;
+  }
+
+  #calc-resultados {
+    display: none;
+    background: #f5f5f5;
+    padding: 24px;
+    border-radius: 8px;
+    margin-top: 32px;
+  }
+
+  #calc-resultados.show {
+    display: block;
+  }
+
+  .calc-result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .calc-result-row:last-child {
+    border-bottom: none;
+  }
+
+  .calc-result-row .label {
+    font-weight: 500;
+    color: #666;
+  }
+
+  .calc-result-row .value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0066cc;
+  }
+
+  .calc-veredicto {
+    background: #fff;
+    padding: 16px;
+    border-left: 4px solid #ff9800;
+    border-radius: 4px;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  .calc-veredicto.calc-good {
+    border-left-color: #4caf50;
+  }
+
+  .calc-veredicto b {
+    color: #333;
+  }
+
+  #btn-wa-resultado {
+    margin-top: 16px;
+  }
+
+  @media (max-width: 640px) {
+    .calc-container {
+      padding: 16px;
+      margin: 20px auto;
+    }
+
+    .calc-actions {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+      <span class="brand-tagline">Energía siempre disponible</span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="equipos.html">Equipos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="cotizacion.html">Cotización</a></li>
+      <li><a href="calculadora.html" class="active">Calculadora</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="cotizacion.html" class="nav-cta">Solicitar renta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Herramienta de análisis</div>
+    <h1>Costo de inactividad por falta de energía</h1>
+    <p class="lead">Descubre cuánto le cuesta a tu operación cada corte de energía. Compara con el costo de renta de un generador de respaldo.</p>
+  </div>
+</section>
+
+<section class="calc-container">
+  <div class="calc-form-group">
+    <label for="ingresoHora">Ingreso por hora de operación (MXN)</label>
+    <input type="number" id="ingresoHora" placeholder="Ej. 5000" min="0" inputmode="decimal">
+  </div>
+
+  <div class="calc-form-group">
+    <label for="nominaHora">Nómina por hora de inactividad (MXN)</label>
+    <input type="number" id="nominaHora" placeholder="Ej. 2000" min="0" inputmode="decimal">
+  </div>
+
+  <div class="calc-form-group">
+    <label for="horasCorte">Duración promedio de cada corte (horas)</label>
+    <input type="number" id="horasCorte" placeholder="Ej. 4" min="0" step="0.5" inputmode="decimal">
+  </div>
+
+  <div class="calc-form-group">
+    <label for="eventosAno">Número de cortes estimados al año</label>
+    <input type="number" id="eventosAno" placeholder="Ej. 8" min="0" inputmode="numeric">
+  </div>
+
+  <div class="calc-form-group">
+    <label for="rentaMensual">Renta mensual de generador de respaldo (MXN)</label>
+    <input type="number" id="rentaMensual" placeholder="Solicita presupuesto a SFI" min="0" inputmode="decimal">
+  </div>
+
+  <div class="calc-actions">
+    <button type="button" id="btn-calcular" class="btn btn-amber">Calcular</button>
+  </div>
+
+  <div id="calc-resultados" aria-live="polite" aria-label="Resultados de la calculadora">
+    <h3>Análisis de costos</h3>
+    
+    <div class="calc-result-row">
+      <span class="label">Costo por evento:</span>
+      <span class="value" id="calcCostoEvento">—</span>
+    </div>
+
+    <div class="calc-result-row">
+      <span class="label">Costo anual de inactividad:</span>
+      <span class="value" id="calcCostoAnual">—</span>
+    </div>
+
+    <p id="calcCostoAnualSub" style="color: #999; font-size: 14px; margin: 8px 0 0 0;"></p>
+
+    <div class="calc-result-row">
+      <span class="label">Costo anual de renta:</span>
+      <span class="value" id="calcCostoRentaAnual">—</span>
+    </div>
+
+    <div id="calcVeredicto" class="calc-veredicto"></div>
+
+    <button type="button" id="btn-wa-resultado" class="btn btn-wa">Compartir resultado por WhatsApp</button>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>¿Listo para proteger tu operación?</h2>
+      <p>Cotiza un generador de respaldo con nosotros — capacidad, voltaje y disponibilidad a tu medida.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="cotizacion.html" class="btn btn-amber">Solicitar cotización</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="margin-bottom:14px;">
+          <span class="brand-logo-chip"><img src="img/logo.png" alt="SF Industrial"></span>
+          <span class="brand-tagline">Energía siempre disponible</span>
+        </a>
+        <p>Renta de generadores, compresores Kaeser y torres de iluminación en Nuevo León.</p>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="equipos.html">Equipos disponibles</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="cotizacion.html">Cotización</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Equipos</h5>
+        <ul>
+          <li><a href="equipos.html#generador">Generadores</a></li>
+          <li><a href="equipos.html#compresor">Compresores Kaeser</a></li>
+          <li><a href="equipos.html#torre">Torres de iluminación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li>Tel / WhatsApp: 81 1571 2636</li>
+          <li>soporte.rentas01@sfindustrial.mx</li>
+          <li>Nazry Hasbún Hasbún 102, Bodega 2<br>66600 Cd. Apodaca, N.L.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sistemas de Fuerza Industrial S.A. de C.V.</span>
+      <span>Disponibilidad de inventario actualizada al día de hoy.</span>
+    </div>
+  </div>
+</footer>
+
 <script src="js/main.js"></script>
 <script>
 function calcFmt(n){
@@ -41,12 +303,12 @@ function calcCalcular(){
       veredictoTexto = `Con un generador de respaldo en renta, tu planta se ahorraría <b>${calcFmt(ahorro)} al año</b> comparado con el costo de quedarte sin energía.`;
     } else {
       veredictoEl.classList.remove('calc-good');
-      veredictoTexto = `Con la frecuencia de cortes indicada, el costo de renta anual (<b>${calcFmt(costoRentaAnual)}</b>) es mayor o igual al costo estimado de inactividad. Contáctanos para ajustar la capacidad de respaldo a tu operación.`;
+      veredictoTexto = `Con la frecuencia de cortes indicada, el costo de renta anual (<b>${calcFmt(costoRentaAnual)}</b>) es mayor o igual al costo estimado de inactividad. Contáctanos para ajustar la capacidad y términos.`;
     }
   } else {
     rentaAnualEl.textContent = '—';
     veredictoEl.classList.remove('calc-good');
-    veredictoTexto = `Cada corte le cuesta a tu operación aproximadamente <b>${calcFmt(costoPorEvento)}</b>. Agrega una renta mensual arriba para ver cuánto ahorrarías, o solicita una cotización para comparar opciones.`;
+    veredictoTexto = `Cada corte le cuesta a tu operación aproximadamente <b>${calcFmt(costoPorEvento)}</b>. Agrega una renta mensual arriba para ver cuánto ahorrarías, o solicita una cotización a SFI.`;
   }
 
   veredictoEl.innerHTML = veredictoTexto;
@@ -69,3 +331,5 @@ document.getElementById('btn-wa-resultado').addEventListener('click', () => {
   window.open(buildWhatsAppLink(calcUltimoResultado), "_blank");
 });
 </script>
+</body>
+</html>
