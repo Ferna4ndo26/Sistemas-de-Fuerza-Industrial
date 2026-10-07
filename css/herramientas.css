@@ -1,0 +1,103 @@
+/* Herramientas SFI Industrial: todo está acotado a .sfi-tools para no chocar con tus estilos */
+.sfi-tools{
+  --sfi-blue:#1F69B4; --sfi-red:#DA2027; --sfi-ink:#16202b;
+  --sfi-steel:#eef1f4; --sfi-line:#c3ccd6; --sfi-muted:#53606d;
+  max-width:1000px; margin:0 auto; padding:64px 20px; color:var(--sfi-ink); font-family:inherit; line-height:1.5;
+}
+.sfi-tools *{box-sizing:border-box}
+.sfi-head{margin-bottom:28px; max-width:62ch}
+.sfi-head h2{margin:0 0 8px; font-size:clamp(1.6rem,3.5vw,2.2rem); line-height:1.15}
+.sfi-head p{margin:0; color:var(--sfi-muted)}
+
+/* Pestañas */
+.sfi-tabs{display:flex; flex-wrap:wrap; gap:0; border-bottom:3px solid var(--sfi-blue)}
+.sfi-tab{
+  appearance:none; border:1px solid var(--sfi-line); border-bottom:0; background:var(--sfi-steel);
+  color:var(--sfi-ink); padding:12px 18px; font:inherit; font-weight:600; cursor:pointer; margin-right:-1px;
+}
+.sfi-tab[aria-selected="true"]{background:var(--sfi-blue); border-color:var(--sfi-blue); color:#fff}
+.sfi-tab:hover:not([aria-selected="true"]){background:#dfe5ea}
+
+/* Panel */
+.sfi-panel{border:1px solid var(--sfi-line); border-top:0; padding:28px; background:#fff}
+.sfi-panel[hidden]{display:none}
+.sfi-panel h3{margin:0 0 6px; font-size:1.3rem}
+.sfi-lead{margin:0 0 20px; color:var(--sfi-muted); max-width:62ch}
+
+/* Campos */
+.sfi-tools label{display:flex; flex-direction:column; gap:6px; font-size:.92rem; font-weight:600}
+.sfi-tools input,.sfi-tools select{
+  font:inherit; font-weight:400; padding:10px 12px; border:1px solid #8a97a5; border-radius:3px; background:#fff; color:var(--sfi-ink); width:100%; min-height:44px;
+}
+.sfi-tools :focus-visible{outline:3px solid var(--sfi-blue); outline-offset:2px}
+.sfi-fields,.sfi-opts{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin:18px 0 22px}
+
+/* Filas de carga */
+.sfi-rows-head,.sfi-row{display:grid; grid-template-columns:2fr .7fr 1fr .8fr 44px; gap:10px; align-items:center}
+.sfi-rows-head{font-size:.82rem; font-weight:600; color:var(--sfi-muted); margin-bottom:6px}
+.sfi-row{margin-bottom:10px}
+.sfi-r-del{
+  min-height:44px; border:1px solid var(--sfi-line); background:var(--sfi-steel); border-radius:3px; font-size:1.2rem; cursor:pointer; color:var(--sfi-ink);
+}
+.sfi-r-del:hover{border-color:var(--sfi-red); color:var(--sfi-red)}
+
+/* Botones */
+.sfi-btn{
+  display:inline-block; appearance:none; border:2px solid var(--sfi-red); background:var(--sfi-red); color:#fff;
+  padding:12px 22px; font:inherit; font-weight:700; border-radius:3px; cursor:pointer; text-decoration:none; text-align:center;
+}
+.sfi-btn:hover{background:#b9171d; border-color:#b9171d}
+.sfi-btn--ghost{background:transparent; color:var(--sfi-blue); border-color:var(--sfi-blue)}
+.sfi-btn--ghost:hover{background:var(--sfi-blue); border-color:var(--sfi-blue); color:#fff}
+.sfi-link{appearance:none; background:none; border:0; padding:8px 0; font:inherit; color:var(--sfi-blue); text-decoration:underline; cursor:pointer}
+
+/* Resultados */
+.sfi-out:not(:empty){margin-top:26px; padding-top:24px; border-top:1px dashed var(--sfi-line)}
+.sfi-plate{
+  position:relative; display:inline-block; min-width:min(100%,320px); padding:20px 36px; background:var(--sfi-steel);
+  border:2px solid var(--sfi-ink); outline:1px solid var(--sfi-ink); outline-offset:-7px;
+}
+.sfi-plate::before,.sfi-plate::after{
+  content:""; position:absolute; top:50%; width:8px; height:8px; margin-top:-4px; border-radius:50%; background:#8a97a5; box-shadow:inset 0 0 0 2px var(--sfi-steel);
+}
+.sfi-plate::before{left:11px} .sfi-plate::after{right:11px}
+.sfi-plate p{margin:0}
+.sfi-plate__k{font-size:.9rem; font-weight:600; color:var(--sfi-muted)}
+.sfi-plate__v{font-size:clamp(2.4rem,7vw,3.4rem); font-weight:800; line-height:1.1; color:var(--sfi-blue); font-variant-numeric:tabular-nums}
+.sfi-plate__v span{font-size:.45em; font-weight:700}
+.sfi-plate__s{font-size:.92rem}
+.sfi-facts{margin:18px 0; padding-left:20px; max-width:64ch}
+.sfi-facts li{margin-bottom:6px}
+.sfi-note{font-size:.85rem; color:var(--sfi-muted); max-width:64ch; margin:14px 0 0}
+.sfi-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; align-items:center}
+.sfi-error{color:var(--sfi-red); font-weight:600; margin:0}
+
+/* Barras de comparación */
+.sfi-bars{display:grid; gap:12px; margin:8px 0 18px; max-width:640px}
+.sfi-bar__lbl{display:flex; justify-content:space-between; gap:12px; font-weight:600; font-size:.92rem; margin-bottom:4px}
+.sfi-bar__track{background:var(--sfi-steel); height:22px}
+.sfi-bar__fill{height:100%; width:0; transition:width .5s ease}
+.sfi-bar__fill--rent{background:var(--sfi-blue)}
+.sfi-bar__fill--buy{background:var(--sfi-red)}
+.sfi-verdict{font-size:1.15rem; font-weight:700; margin:0 0 8px}
+
+/* Selector guiado */
+.sfi-prog{margin:0 0 6px; font-size:.9rem; color:var(--sfi-muted)}
+.sfi-opt-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin:18px 0 10px}
+.sfi-choice{
+  appearance:none; text-align:left; padding:16px 18px; font:inherit; font-weight:600; cursor:pointer; color:var(--sfi-ink);
+  background:#fff; border:2px solid var(--sfi-line); border-left:6px solid var(--sfi-blue); border-radius:3px; min-height:60px;
+}
+.sfi-choice:hover{border-color:var(--sfi-blue); background:var(--sfi-steel)}
+.sfi-tips{margin:14px 0 0; padding-left:20px; max-width:64ch}
+.sfi-tips li{margin-bottom:6px}
+
+@media (max-width:640px){
+  .sfi-panel{padding:20px 16px}
+  .sfi-tab{flex:1 1 100%; text-align:left; margin-right:0; border-right:1px solid var(--sfi-line)}
+  .sfi-rows-head{display:none}
+  .sfi-row{grid-template-columns:1fr 1fr; padding:12px; border:1px solid var(--sfi-line); border-radius:3px}
+  .sfi-row .sfi-r-tipo{grid-column:1 / -1}
+  .sfi-r-del{grid-column:1 / -1}
+}
+@media (prefers-reduced-motion:reduce){.sfi-bar__fill{transition:none}}
