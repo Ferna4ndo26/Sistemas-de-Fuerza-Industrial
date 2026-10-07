@@ -26,6 +26,4 @@ El archivo `js/equipos-data.js` se genera a partir de dos Excel:
 1. **Disponibilidad** (tipo, marca, modelo, capacidad, voltaje, estatus) → actualiza qué aparece en el catálogo.
 2. **Levantamiento de equipos** (motor, dimensiones, peso, etc.) → alimenta la ficha técnica de cada generador.
 
-Para actualizar, comparte los Excel actualizados.
-
 © Sistemas de Fuerza Industrial S.A. de C.V.
